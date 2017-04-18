@@ -17,41 +17,41 @@
     var vue = window.Vue;
 
     var vCheckBox = vue.extend({
-        data: function () {
-            var props = this.$options.propsData;
-            var data = {
-                _hover: 0,
-                _readonly: {
-                    text: props && props.hasOwnProperty("text"),
-                    disabled: props && props.hasOwnProperty("disabled"),
-                    checked: props && props.hasOwnProperty("checked")
-                }
-            };
-            if (!data._readonly.text) {
-                data.text = "";
-            }
-            if (!data._readonly.disabled) {
-                data.disabled = false;
-            }
-            if (!data._readonly.checked) {
-                data.checked = false;
-            }
-            return data;
-        },
+data: function () {
+    var props = this.$options.propsData;
+    var data = {
+        _hover: 0,
+        _readonly: {
+            text: props && props.hasOwnProperty("text"),
+            disabled: props && props.hasOwnProperty("disabled"),
+            checked: props && props.hasOwnProperty("checked")
+        }
+    };
+    if (!data._readonly.text) {
+        data.text = "";
+    }
+    if (!data._readonly.disabled) {
+        data.disabled = false;
+    }
+    if (!data._readonly.checked) {
+        data.checked = false;
+    }
+    return data;
+},
         props: ["checked", "text", "disabled"],
         template: template,
-        methods: {
-            toggle: function () {
-                if (this.disabled) {
-                    return;
-                }
-                var value = this.checked == null ? false : !this.checked;
-                if (this.$data._readonly.checked) {
-                    this.onChanged(value);
-                    return;
-                }
-                this.checked = value;
-            },
+methods: {
+    toggle: function () {
+        if (this.disabled) {
+            return;
+        }
+        var value = this.checked == null ? false : !this.checked;
+        if (this.$data._readonly.checked) {
+            this.onChanged(value);
+            return;
+        }
+        this.checked = value;
+    },
             onChanged: function (value) {
                 if (value === undefined) {
                     value = this.checked;
@@ -111,44 +111,44 @@
             }
         }
     });
-    vCheckBox.checkAll = function (value, objects, field) {
-        if (typeof value !== "boolean" || objects == null) {
-            return;
+vCheckBox.checkAll = function (value, objects, field) {
+    if (typeof value !== "boolean" || objects == null) {
+        return;
+    }
+    if (typeof field !== "string") {
+        field = "checked";
+    }
+    for (var key in objects) {
+        if (objects.hasOwnProperty(key)) {
+            var obj = objects[key];
+            if (obj && obj.hasOwnProperty(field) && obj[field] !== value) {
+                obj[field] = value;
+            }
         }
-        if (typeof field !== "string") {
-            field = "checked";
-        }
-        for (var key in objects) {
-            if (objects.hasOwnProperty(key)) {
-                var obj = objects[key];
-                if (obj && obj.hasOwnProperty(field) && obj[field] !== value) {
-                    obj[field] = value;
+    }
+};
+vCheckBox.isCheckAll = function (objects, field) {
+    if (objects == null) {
+        return false;
+    }
+    if (typeof field !== "string") {
+        field = "checked";
+    }
+    var value = null;
+    for (var key in objects) {
+        if (objects.hasOwnProperty(key)) {
+            var obj = objects[key];
+            if (obj && obj.hasOwnProperty(field)) {
+                if (value == null) {
+                    value = obj[field];
+                } else if (value !== obj[field]) {
+                    return null;
                 }
             }
         }
-    };
-    vCheckBox.isCheckAll = function (objects, field) {
-        if (objects == null) {
-            return false;
-        }
-        if (typeof field !== "string") {
-            field = "checked";
-        }
-        var value = null;
-        for (var key in objects) {
-            if (objects.hasOwnProperty(key)) {
-                var obj = objects[key];
-                if (obj && obj.hasOwnProperty(field)) {
-                    if (value == null) {
-                        value = obj[field];
-                    } else if (value !== obj[field]) {
-                        return null;
-                    }
-                }
-            }
-        }
-        return value;
-    };
+    }
+    return value;
+};
     vCheckBox.template1 = template;
     vCheckBox.version = version;
     window.vCheckBox = vCheckBox;
