@@ -12,7 +12,7 @@
     <link href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" />
     <link href="//cdn.staticfile.org/datatables/1.10.8/css/dataTables.bootstrap.css" rel="stylesheet">
-    <script src="../js/vCheckBox.js"></script>
+    <script src="js/vCheckBox.js"></script>
     <style>
         red { color:red }
     </style>
@@ -29,9 +29,9 @@
         };
 
     </script>
-    <label> <input name="1" type="radio" checked="checked" onclick="showPanel(0)"/> �Դ�ģ��</label>  
-    <label> <input name="1" type="radio" onclick="showPanel(1)"/>  ��ʹ��ģ��</label>  
-    <label> <input name="1" type="radio" onclick="showPanel(2)"/>  Ƕ��table</label>
+    <label> <input name="1" type="radio" checked="checked" onclick="showPanel(0)"/> 自带模版</label>  
+    <label> <input name="1" type="radio" onclick="showPanel(1)"/>  不使用模版</label>  
+    <label> <input name="1" type="radio" onclick="showPanel(2)"/>  嵌入table</label>
 </h1>
     
 <div id="d1">
@@ -42,19 +42,19 @@
         var test1 = new vCheckBox({
             el: "#test1",
             data: {
-                text: "���Զ�ѡ��"
+                text: "测试多选框"
             }
         });
     </script>
     <div id="test1-view">
-        <p>checked: <b>{{checkbox.checked}}</b> <button @click="checkbox.checked = !checkbox.checked">�л�</button>
+        <p>checked: <b>{{checkbox.checked}}</b> <button @click="checkbox.checked = !checkbox.checked">切换</button>
         </p>
-        <p>disabled: <b>{{checkbox.disabled}}</b> <button @click="checkbox.disabled = !checkbox.disabled">�л�</button>
+        <p>disabled: <b>{{checkbox.disabled}}</b> <button @click="checkbox.disabled = !checkbox.disabled">切换</button>
         </p>
         <p>text: <input v-model="checkbox.text"/>
         </p>
         <p>
-            �¼�:<br/>
+            事件:<br/>
             <textarea rows="10" cols="50">{{ logs.join('\n') }}</textarea>
         </p>
     </div>
@@ -84,7 +84,7 @@
 var test1 = new vCheckBox({
     el: "#test1",
     data: {
-        text:"���Զ�ѡ��"
+        text:"测试多选框"
     }
 });
 </pre>
@@ -102,23 +102,23 @@ var test1 = new vCheckBox({
         var test2 = new vCheckBox({
             el: "#test2",
             data: {
-                text: "���Զ�ѡ��,��ʹ��ģ��"
+                text: "测试多选框,不使用模版"
             },
             template: null
         });
     </script>
     <div id="test2-view">
         <p>
-            checked: <b>{{checkbox.checked}}</b> <button @click="checkbox.checked = !checkbox.checked">�л�</button>
+            checked: <b>{{checkbox.checked}}</b> <button @click="checkbox.checked = !checkbox.checked">切换</button>
         </p>
         <p>
-            disabled: <b>{{checkbox.disabled}}</b> <button @click="checkbox.disabled = !checkbox.disabled">�л�</button>
+            disabled: <b>{{checkbox.disabled}}</b> <button @click="checkbox.disabled = !checkbox.disabled">切换</button>
         </p>
         <p>
             text: <input v-model="checkbox.text"/>
         </p>
         <p>
-            �¼�:<br/>
+            事件:<br/>
             <textarea rows="10" cols="50">{{ logs.join('\n') }}</textarea>
         </p>
     </div>
@@ -151,7 +151,7 @@ var test1 = new vCheckBox({
 var test2 = new vCheckBox({
     el: "#test2",
     data: {
-        text: "���Զ�ѡ��,��ʹ��ģ��"
+        text: "测试多选框,不使用模版"
     },
     template: null
 });
@@ -192,14 +192,14 @@ var test2 = new vCheckBox({
                 columnFieldName: "field",
                 columnDefault: { text: "" },
                 columns: [
-                    { text: "����", field: "name", sort: true },
-                    { text: "�Ա�", field: "sex" }
+                    { text: "姓名", field: "name", sort: true },
+                    { text: "性别", field: "sex" }
                 ],
                 checkAll: null,
                 rows: [
-                    { id: 1, name: "����", sex: "��", checked: false },
-                    { id: 2, name: "����", sex: "��", checked: true },
-                    { id: 3, name: "������", sex: "��", checked: false }
+                    { id: 1, name: "张三", sex: "男", checked: false },
+                    { id: 2, name: "李四", sex: "男", checked: true },
+                    { id: 3, name: "王麻子", sex: "男", checked: false }
                 ]
             },
             components: {
@@ -252,14 +252,14 @@ var table = new vTable({
         columnFieldName: "field",
         columnDefault: { text: "" },
         columns: [
-            { text: "����", field: "name", sort: true },
-            { text: "�Ա�", field: "sex" }
+            { text: "姓名", field: "name", sort: true },
+            { text: "性别", field: "sex" }
         ],
         checkAll: null,
         rows: [
-            { id: 1, name: "����", sex: "��", checked: false },
-            { id: 2, name: "����", sex: "��", checked: true },
-            { id: 3, name: "������", sex: "��", checked: false }
+            { id: 1, name: "张三", sex: "男", checked: false },
+            { id: 2, name: "李四", sex: "男", checked: true },
+            { id: 3, name: "王麻子", sex: "男", checked: false }
         ]
     },
     components: {<red>
