@@ -3,7 +3,10 @@
  * version: v1.1.0.0
  * author:  blqw
  */
-(function () {
+(function (window) {
+    if (window == null || window.Vue == null) {
+        return;
+    }
     var version = "1.1.0.0";
     var template = '<div style="display: inline-block;*display: inline;*zoom: 1;width: 100%;line-height: 22px;" name="sex" value="boy" @click="toggle" @mouseover="$data._hover=1" @mouseout="$data._hover=0">\
             <ins :style="{backgroundPositionX:( (!disabled&&checked===false&&$data._hover)?-138:((disabled?-69:0)+(checked?-23:checked==null?-46:0)) ).toString() + \'px\'}" \
@@ -11,8 +14,9 @@
         <span style="display: inline-block;*display: inline;*zoom: 1;vertical-align: middle;">{{text}}</span>\
         <slot></slot>\
 </div>';
+    var vue = window.Vue;
 
-    var vCheckBox = Vue.extend({
+    var vCheckBox = vue.extend({
         data: function () {
             var props = this.$options.propsData;
             var data = {
