@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="js/vue.js"></script>
+    <script src="js/vTable.js?v1"></script>
+
+    <link href="//cdn.staticfile.org/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <link href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="//cdn.staticfile.org/datatables/1.10.8/css/dataTables.bootstrap.css" rel="stylesheet">
+    <script src="../js/vCheckBox.js"></script>
+    <style>
+        red { color:red }
+    </style>
+</head>
+
+<body>
+<h1>
+    <script>
+        var showPanel = function(index) {
+            d1.style.display = 'none';
+            d2.style.display = 'none';
+            d3.style.display = 'none';
+            [d1,d2,d3][index].style.display = '';
+        };
+
+    </script>
+    <label> <input name="1" type="radio" checked="checked" onclick="showPanel(0)"/> 自带模版</label>  
+    <label> <input name="1" type="radio" onclick="showPanel(1)"/>  不使用模版</label>  
+    <label> <input name="1" type="radio" onclick="showPanel(2)"/>  嵌入table</label>
+</h1>
+    
+<div id="d1">
+    <div style="background: bisque">
+        <input type="checkbox" id="test1"/>
+    </div>
+    <script>
+        var test1 = new vCheckBox({
+            el: "#test1",
+            data: {
+                text: "测试多选框"
+            }
+        });
+    </script>
+    <div id="test1-view">
+        <p>checked: <b>{{checkbox.checked}}</b> <button @click="checkbox.checked = !checkbox.checked">切换</button>
+        </p>
+        <p>disabled: <b>{{checkbox.disabled}}</b> <button @click="checkbox.disabled = !checkbox.disabled">切换</button>
+        </p>
+        <p>text: <input v-model="checkbox.text"/>
+        </p>
+        <p>
+            事件:<br/>
+            <textarea rows="10" cols="50">{{ logs.join('\n') }}</textarea>
+        </p>
+    </div>
+    <script>
+        var test1_view = new Vue({
+            el: "#test1-view",
+            data: {
+                checkbox: test1,
+                logs: []
+            },
+            created: function() {
+                var logs = this.logs;
+                this.checkbox.$on("changed", function() { logs.push("changed"); });
+                this.checkbox.$on("checked", function() { logs.push("checked"); });
+                this.checkbox.$on("unchecked", function() { logs.push("unchecked"); });
+                this.checkbox.$on("statechanged", function() { logs.push("statechanged"); });
+                this.checkbox.$on("disabled", function() { logs.push("disabled"); });
+                this.checkbox.$on("enabled", function() { logs.push("enabled"); });
+            }
+        });
+    </script>
+    <pre>
+//html
+&lt;input type="checkbox" id="test1" /&gt;
+
+//js
+var test1 = new vCheckBox({
+    el: "#test1",
+    data: {
+        text:"测试多选框"
+    }
+});
+</pre>
+
+    <hr/>
+</div>
+<div id="d2" style="display: none">
+    <div style="background: bisque">
+        <label id="test2">
+            <input type="checkbox" v-model="checked" :disabled="disabled"/>
+            {{text}}
+        </label>
+    </div>
+    <script>
+        var test2 = new vCheckBox({
+            el: "#test2",
+            data: {
+                text: "测试多选框,不使用模版"
+            },
+            template: null
+        });
+    </script>
+    <div id="test2-view">
+        <p>
+            checked: <b>{{checkbox.checked}}</b> <button @click="checkbox.checked = !checkbox.checked">切换</button>
+        </p>
+        <p>
+            disabled: <b>{{checkbox.disabled}}</b> <button @click="checkbox.disabled = !checkbox.disabled">切换</button>
+        </p>
+        <p>
+            text: <input v-model="checkbox.text"/>
+        </p>
+        <p>
+            事件:<br/>
+            <textarea rows="10" cols="50">{{ logs.join('\n') }}</textarea>
+        </p>
+    </div>
+    <script>
+        var test2_view = new Vue({
+            el: "#test2-view",
+            data: {
+                checkbox: test2,
+                logs: []
+            },
+            created: function() {
+                var logs = this.logs;
+                this.checkbox.$on("changed", function() { logs.push("changed"); });
+                this.checkbox.$on("checked", function() { logs.push("checked"); });
+                this.checkbox.$on("unchecked", function() { logs.push("unchecked"); });
+                this.checkbox.$on("statechanged", function() { logs.push("statechanged"); });
+                this.checkbox.$on("disabled", function() { logs.push("disabled"); });
+                this.checkbox.$on("enabled", function() { logs.push("enabled"); });
+            }
+        });
+    </script>
+    <pre>
+//html
+&lt;label id="test2"&gt;
+    &lt;input type="checkbox" v-model="checked" :disabled="disabled" /&gt;
+    {{text}}
+&lt;/label&gt;
+
+//js
+var test2 = new vCheckBox({
+    el: "#test2",
+    data: {
+        text: "测试多选框,不使用模版"
+    },
+    template: null
+});
+</pre>
+
+
+    <hr />
+</div>
+
+<div id="d3" style="display: none">
+
+    <table id="table" class="table  table-bordered table-hover dataTables-example dataTable">
+        <thead>
+        <tr role="row">
+            <th @click="checkAll = !checkAll"> <mycheckbox :checked="checkAll" /> </th>
+            <th v-for="(column,index) in columns">
+                {{column.text}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(row,index) in rows" class="gradeA odd" @click="row.checked = !row.checked">
+            <td> <mycheckbox ref="checkboxs" :checked="row.checked" /> </td>
+            <td v-for="column in columns">
+                {{cell(row,column)}}
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+
+    <script>
+        var table = new vTable({
+            el: "#table",
+            data: {
+                id: "id",
+                columnFieldName: "field",
+                columnDefault: { text: "" },
+                columns: [
+                    { text: "姓名", field: "name", sort: true },
+                    { text: "性别", field: "sex" }
+                ],
+                checkAll: null,
+                rows: [
+                    { id: 1, name: "张三", sex: "男", checked: false },
+                    { id: 2, name: "李四", sex: "男", checked: true },
+                    { id: 3, name: "王麻子", sex: "男", checked: false }
+                ]
+            },
+            components: {
+                mycheckbox: {
+                    extends: vCheckBox
+                }
+            },
+            watch: {
+                checkAll: function(value) {
+                    vCheckBox.checkAll(value, this.rows, "checked");
+                },
+                "rows": {
+                    handler: function(rows) {
+                        if (rows && rows.length > 0) {
+                            this.checkAll = vCheckBox.isCheckAll(rows, "checked");
+                        }
+                    },
+                    deep: true
+                }
+            }
+        });
+    </script>
+    <pre>
+//html
+&lt;table id="table" class="table  table-bordered table-hover dataTables-example dataTable"&gt;
+    &lt;thead&gt;
+        &lt;tr role="row"&gt;
+            &lt;th @click="checkAll = !checkAll"&gt; &lt;mycheckbox :checked="checkAll" /&gt; &lt;/th&gt;
+            &lt;th v-for="(column,index) in columns"&gt;
+                {{column.text}}
+            &lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr v-for="(row,index) in rows" class="gradeA odd" @click="row.checked = !row.checked"&gt;
+            &lt;td&gt; &lt;mycheckbox ref="checkboxs" :checked="row.checked" /&gt; &lt;/td&gt;
+            &lt;td v-for="column in columns"&gt;
+                {{cell(row,column)}}
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;
+//js
+var table = new vTable({
+    el: "#table",
+    data: {
+        id: "id",
+        columnFieldName: "field",
+        columnDefault: { text: "" },
+        columns: [
+            { text: "姓名", field: "name", sort: true },
+            { text: "性别", field: "sex" }
+        ],
+        checkAll: null,
+        rows: [
+            { id: 1, name: "张三", sex: "男", checked: false },
+            { id: 2, name: "李四", sex: "男", checked: true },
+            { id: 3, name: "王麻子", sex: "男", checked: false }
+        ]
+    },
+    components: {<red>
+        mycheckbox: {
+            extends: vCheckBox
+        }</red>
+    },
+    watch: {<red>
+        checkAll: function (value) {
+            vCheckBox.checkAll(value, this.rows, "checked");
+        },
+        rows: {
+            handler: function (rows) {
+                if (rows && rows.length > 0) {
+                    this.checkAll = vCheckBox.isCheckAll(rows, "checked");
+                }
+            },
+            deep: true
+        }</red>
+    }
+});
+</pre>
+</div>
+</body>
+
+</html>
