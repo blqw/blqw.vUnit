@@ -1,4 +1,4 @@
-
+ï»¿
 <!DOCTYPE html>
 <html>
 
@@ -29,9 +29,9 @@
         };
 
     </script>
-    <label> <input name="1" type="radio" checked="checked" onclick="showPanel(0)"/> ×Ô´øÄ£°æ</label>  
-    <label> <input name="1" type="radio" onclick="showPanel(1)"/>  ²»Ê¹ÓÃÄ£°æ</label>  
-    <label> <input name="1" type="radio" onclick="showPanel(2)"/>  Ç¶Èëtable</label>
+    <label> <input name="1" type="radio" checked="checked" onclick="showPanel(0)"/> ï¿½Ô´ï¿½Ä£ï¿½ï¿½</label>  
+    <label> <input name="1" type="radio" onclick="showPanel(1)"/>  ï¿½ï¿½Ê¹ï¿½ï¿½Ä£ï¿½ï¿½</label>  
+    <label> <input name="1" type="radio" onclick="showPanel(2)"/>  Ç¶ï¿½ï¿½table</label>
 </h1>
     
 <div id="d1">
@@ -42,19 +42,19 @@
         var test1 = new vCheckBox({
             el: "#test1",
             data: {
-                text: "²âÊÔ¶àÑ¡¿ò"
+                text: "ï¿½ï¿½ï¿½Ô¶ï¿½Ñ¡ï¿½ï¿½"
             }
         });
     </script>
     <div id="test1-view">
-        <p>checked: <b>{{checkbox.checked}}</b> <button @click="checkbox.checked = !checkbox.checked">ÇÐ»»</button>
+        <p>checked: <b>{{checkbox.checked}}</b> <button @click="checkbox.checked = !checkbox.checked">ï¿½Ð»ï¿½</button>
         </p>
-        <p>disabled: <b>{{checkbox.disabled}}</b> <button @click="checkbox.disabled = !checkbox.disabled">ÇÐ»»</button>
+        <p>disabled: <b>{{checkbox.disabled}}</b> <button @click="checkbox.disabled = !checkbox.disabled">ï¿½Ð»ï¿½</button>
         </p>
         <p>text: <input v-model="checkbox.text"/>
         </p>
         <p>
-            ÊÂ¼þ:<br/>
+            ï¿½Â¼ï¿½:<br/>
             <textarea rows="10" cols="50">{{ logs.join('\n') }}</textarea>
         </p>
     </div>
@@ -84,7 +84,7 @@
 var test1 = new vCheckBox({
     el: "#test1",
     data: {
-        text:"²âÊÔ¶àÑ¡¿ò"
+        text:"ï¿½ï¿½ï¿½Ô¶ï¿½Ñ¡ï¿½ï¿½"
     }
 });
 </pre>
@@ -102,23 +102,23 @@ var test1 = new vCheckBox({
         var test2 = new vCheckBox({
             el: "#test2",
             data: {
-                text: "²âÊÔ¶àÑ¡¿ò,²»Ê¹ÓÃÄ£°æ"
+                text: "ï¿½ï¿½ï¿½Ô¶ï¿½Ñ¡ï¿½ï¿½,ï¿½ï¿½Ê¹ï¿½ï¿½Ä£ï¿½ï¿½"
             },
             template: null
         });
     </script>
     <div id="test2-view">
         <p>
-            checked: <b>{{checkbox.checked}}</b> <button @click="checkbox.checked = !checkbox.checked">ÇÐ»»</button>
+            checked: <b>{{checkbox.checked}}</b> <button @click="checkbox.checked = !checkbox.checked">ï¿½Ð»ï¿½</button>
         </p>
         <p>
-            disabled: <b>{{checkbox.disabled}}</b> <button @click="checkbox.disabled = !checkbox.disabled">ÇÐ»»</button>
+            disabled: <b>{{checkbox.disabled}}</b> <button @click="checkbox.disabled = !checkbox.disabled">ï¿½Ð»ï¿½</button>
         </p>
         <p>
             text: <input v-model="checkbox.text"/>
         </p>
         <p>
-            ÊÂ¼þ:<br/>
+            ï¿½Â¼ï¿½:<br/>
             <textarea rows="10" cols="50">{{ logs.join('\n') }}</textarea>
         </p>
     </div>
@@ -151,7 +151,7 @@ var test1 = new vCheckBox({
 var test2 = new vCheckBox({
     el: "#test2",
     data: {
-        text: "²âÊÔ¶àÑ¡¿ò,²»Ê¹ÓÃÄ£°æ"
+        text: "ï¿½ï¿½ï¿½Ô¶ï¿½Ñ¡ï¿½ï¿½,ï¿½ï¿½Ê¹ï¿½ï¿½Ä£ï¿½ï¿½"
     },
     template: null
 });
@@ -192,14 +192,14 @@ var test2 = new vCheckBox({
                 columnFieldName: "field",
                 columnDefault: { text: "" },
                 columns: [
-                    { text: "ÐÕÃû", field: "name", sort: true },
-                    { text: "ÐÔ±ð", field: "sex" }
+                    { text: "ï¿½ï¿½ï¿½ï¿½", field: "name", sort: true },
+                    { text: "ï¿½Ô±ï¿½", field: "sex" }
                 ],
                 checkAll: null,
                 rows: [
-                    { id: 1, name: "ÕÅÈý", sex: "ÄÐ", checked: false },
-                    { id: 2, name: "ÀîËÄ", sex: "ÄÐ", checked: true },
-                    { id: 3, name: "ÍõÂé×Ó", sex: "ÄÐ", checked: false }
+                    { id: 1, name: "ï¿½ï¿½ï¿½ï¿½", sex: "ï¿½ï¿½", checked: false },
+                    { id: 2, name: "ï¿½ï¿½ï¿½ï¿½", sex: "ï¿½ï¿½", checked: true },
+                    { id: 3, name: "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", sex: "ï¿½ï¿½", checked: false }
                 ]
             },
             components: {
@@ -252,14 +252,14 @@ var table = new vTable({
         columnFieldName: "field",
         columnDefault: { text: "" },
         columns: [
-            { text: "ÐÕÃû", field: "name", sort: true },
-            { text: "ÐÔ±ð", field: "sex" }
+            { text: "ï¿½ï¿½ï¿½ï¿½", field: "name", sort: true },
+            { text: "ï¿½Ô±ï¿½", field: "sex" }
         ],
         checkAll: null,
         rows: [
-            { id: 1, name: "ÕÅÈý", sex: "ÄÐ", checked: false },
-            { id: 2, name: "ÀîËÄ", sex: "ÄÐ", checked: true },
-            { id: 3, name: "ÍõÂé×Ó", sex: "ÄÐ", checked: false }
+            { id: 1, name: "ï¿½ï¿½ï¿½ï¿½", sex: "ï¿½ï¿½", checked: false },
+            { id: 2, name: "ï¿½ï¿½ï¿½ï¿½", sex: "ï¿½ï¿½", checked: true },
+            { id: 3, name: "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", sex: "ï¿½ï¿½", checked: false }
         ]
     },
     components: {<red>
