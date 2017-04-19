@@ -1,24 +1,24 @@
-# vCheckBox ¶àÑ¡¿ò¿Ø¼ş
+ï»¿# vCheckBox å¤šé€‰æ¡†æ§ä»¶
 ## [Demo](../demo/vCheckBox.html)  
-## [Ô´Âë](../js/vCheckBox.js)
+## [æºç ](../js/vCheckBox.js)
 
-## ¹¦ÄÜ¼ò½é
-ÓÃÓÚÌá¹©¶àÑ¡¿òµÄÒ»°ã¹¦ÄÜ
+## åŠŸèƒ½ç®€ä»‹
+ç”¨äºæä¾›å¤šé€‰æ¡†çš„ä¸€èˆ¬åŠŸèƒ½
 
-## ÊôĞÔ
+## å±æ€§
 
-|ÊôĞÔÃû|ÀàĞÍ|²Ù×÷|Ä¬ÈÏÖµ|ËµÃ÷|ÆäËû|
+|å±æ€§å|ç±»å‹|æ“ä½œ|é»˜è®¤å€¼|è¯´æ˜|å…¶ä»–|
 |:---:|:---:|:---|:---:|:---|:---|
-|text          |string |get;set;|   ""  | ÓÃÓÚÏÔÊ¾ÎÄ×Ö  | ×÷Îª×Ó×é¼şÍ¨¹ıprops´«µİÊ±,ÊôĞÔÎªÖ»¶Á×´Ì¬ |
-|disabled      |boolean|get;set;| false | ÊÇ·ñ½ûÓÃ     | ×÷Îª×Ó×é¼şÍ¨¹ıprops´«µİÊ±,ÊôĞÔÎªÖ»¶Á×´Ì¬ |
-|checked       |boolean|get;set;| false | ÊÇ·ñÑ¡ÖĞ     | ×÷Îª×Ó×é¼şÍ¨¹ıprops´«µİÊ±,ÊôĞÔÎªÖ»¶Á×´Ì¬ |
+|text          |string |get;set;|   ""  | ç”¨äºæ˜¾ç¤ºæ–‡å­—  | ä½œä¸ºå­ç»„ä»¶é€šè¿‡propsä¼ é€’æ—¶,å±æ€§ä¸ºåªè¯»çŠ¶æ€ |
+|disabled      |boolean|get;set;| false | æ˜¯å¦ç¦ç”¨     | ä½œä¸ºå­ç»„ä»¶é€šè¿‡propsä¼ é€’æ—¶,å±æ€§ä¸ºåªè¯»çŠ¶æ€ |
+|checked       |boolean|get;set;| false | æ˜¯å¦é€‰ä¸­     | ä½œä¸ºå­ç»„ä»¶é€šè¿‡propsä¼ é€’æ—¶,å±æ€§ä¸ºåªè¯»çŠ¶æ€ |
 
-## ¾²Ì¬ÊôĞÔ
+## é™æ€å±æ€§
 > vCheckBox.template1  
 
-Ä¬ÈÏÄ£°æÑùÊ½  
+é»˜è®¤æ¨¡ç‰ˆæ ·å¼  
  
-## ·½·¨
+## æ–¹æ³•
 
 ### toggle
 > toggle()  
@@ -26,51 +26,51 @@
 checkbox.toggle();
 ```
 
-ÇĞ»»`checked`µÄÑ¡ÖĞ×´Ì¬  
-ÒÔÏÂ2ÖÖÇé¿öÏÂ·½·¨²»²úÉúÈÎºÎĞ§¹û:   
-1. µ±`disabled`Îª`true`Ê±
-1. ×÷Îª×Ó×é¼ş,ÇÒpropsÖĞ´æÔÚ`checked`Ê±  
+åˆ‡æ¢`checked`çš„é€‰ä¸­çŠ¶æ€  
+ä»¥ä¸‹2ç§æƒ…å†µä¸‹æ–¹æ³•ä¸äº§ç”Ÿä»»ä½•æ•ˆæœ:   
+1. å½“`disabled`ä¸º`true`æ—¶
+1. ä½œä¸ºå­ç»„ä»¶,ä¸”propsä¸­å­˜åœ¨`checked`æ—¶  
 
 
 
-### vCheckBox.checkAll (¾²Ì¬·½·¨)
+### vCheckBox.checkAll (é™æ€æ–¹æ³•)
 > vCheckBox.checkAll (value, objects, field)  
 ```js
 vCheckBox.checkAll(true, [{checked:true}, {checked:false}],"isChecked")
 ```
 
-- **value:** booleanÀàĞÍµÄÖµ
-- **objects:** Êı×é»ò¶ÔÏó
-- **field:** stringÀàĞÍµÄÖµ, ±íÊ¾ĞèÒªÉèÖÃµÄÊôĞÔµÄÃû³Æ
-½«`objects`ÖĞËùÓĞ¶ÔÏóµÄ`field`ÊôĞÔÉèÖÃÎª`value` 
+- **value:** booleanç±»å‹çš„å€¼
+- **objects:** æ•°ç»„æˆ–å¯¹è±¡
+- **field:** stringç±»å‹çš„å€¼, è¡¨ç¤ºéœ€è¦è®¾ç½®çš„å±æ€§çš„åç§°
+å°†`objects`ä¸­æ‰€æœ‰å¯¹è±¡çš„`field`å±æ€§è®¾ç½®ä¸º`value` 
 
 
 
-### vCheckBox.isCheckAll (¾²Ì¬·½·¨)
+### vCheckBox.isCheckAll (é™æ€æ–¹æ³•)
 > vCheckBox.isCheckAll(objects, field)  
 ```js
 vCheckBox.isCheckAll([{checked:true}, {checked:false}],"isChecked")
 ```
 
-- **objects:** Êı×é»ò¶ÔÏó
-- **field:** stringÀàĞÍµÄÖµ, ±íÊ¾ĞèÒªÉèÖÃµÄÊôĞÔµÄÃû³Æ
-ÅĞ¶Ï`objects`ÖĞµÄËùÓĞ¶ÔÏóµÄ`field`ÊôĞÔÖµÊÇ·ñ¶¼Îªtrue  
-È«²¿Îªtrue·µ»Øtrue,·´Ö®·µ»Øfalse  
+- **objects:** æ•°ç»„æˆ–å¯¹è±¡
+- **field:** stringç±»å‹çš„å€¼, è¡¨ç¤ºéœ€è¦è®¾ç½®çš„å±æ€§çš„åç§°
+åˆ¤æ–­`objects`ä¸­çš„æ‰€æœ‰å¯¹è±¡çš„`field`å±æ€§å€¼æ˜¯å¦éƒ½ä¸ºtrue  
+å…¨éƒ¨ä¸ºtrueè¿”å›true,åä¹‹è¿”å›false  
 
 
-## ÊÂ¼ş
-> ÊÂ¼ş°ó¶¨ `vueÊµÀı.$on('ÊÂ¼şÃû',function(»Øµ÷²ÎÊı){ ... })`  
+## äº‹ä»¶
+> äº‹ä»¶ç»‘å®š `vueå®ä¾‹.$on('äº‹ä»¶å',function(å›è°ƒå‚æ•°){ ... })`  
 
-|ÊÂ¼şÃû|ÊÂ¼şËµÃ÷|»Øµ÷²ÎÊı|²ÎÊıËµÃ÷|
+|äº‹ä»¶å|äº‹ä»¶è¯´æ˜|å›è°ƒå‚æ•°|å‚æ•°è¯´æ˜|
 |:---:|:---:|:---|:---|
-|changed      |`checked`ÊôĞÔ·¢Éú±ä¸üÊ±´¥·¢      |{vm, checked}|**vm:** VueÊµÀı<br />**checked:** checkedÊôĞÔµÄ×´Ì¬, Ö»¶ÁÇé¿öÏÂ `checked != vm.checked`  |
-|checked      |`checked`ÊôĞÔ±äÎª`true`Ê±´¥·¢   |{vm}|**vm:** VueÊµÀı  |
-|unchecked    |`checked`ÊôĞÔ±äÎª`false`Ê±´¥·¢  |{vm}|**vm:** VueÊµÀı  |
-|statechanged |`disabled`ÊôĞÔ·¢Éú±ä¸üÊ±´¥·¢    |{vm}|**vm:** VueÊµÀı  |
-|disabled     |`disabled`ÊôĞÔ±äÎª`true`Ê±´¥·¢  |{vm}|**vm:** VueÊµÀı  |
-|enabled      |`enabled`ÊôĞÔ±äÎª`false`Ê±´¥·¢  |{vm}|**vm:** VueÊµÀı  |
+|changed      |`checked`å±æ€§å‘ç”Ÿå˜æ›´æ—¶è§¦å‘      |{vm, checked}|**vm:** Vueå®ä¾‹<br />**checked:** checkedå±æ€§çš„çŠ¶æ€, åªè¯»æƒ…å†µä¸‹ `checked != vm.checked`  |
+|checked      |`checked`å±æ€§å˜ä¸º`true`æ—¶è§¦å‘   |{vm}|**vm:** Vueå®ä¾‹  |
+|unchecked    |`checked`å±æ€§å˜ä¸º`false`æ—¶è§¦å‘  |{vm}|**vm:** Vueå®ä¾‹  |
+|statechanged |`disabled`å±æ€§å‘ç”Ÿå˜æ›´æ—¶è§¦å‘    |{vm}|**vm:** Vueå®ä¾‹  |
+|disabled     |`disabled`å±æ€§å˜ä¸º`true`æ—¶è§¦å‘  |{vm}|**vm:** Vueå®ä¾‹  |
+|enabled      |`enabled`å±æ€§å˜ä¸º`false`æ—¶è§¦å‘  |{vm}|**vm:** Vueå®ä¾‹  |
 
-## Ê¾Àı´úÂë
+## ç¤ºä¾‹ä»£ç 
 
 ### html
 ```html
@@ -82,17 +82,17 @@ vCheckBox.isCheckAll([{checked:true}, {checked:false}],"isChecked")
 var test1 = new vCheckBox({
     el: "#test1",
     data: {
-        text: "²âÊÔ¶àÑ¡¿ò"
+        text: "æµ‹è¯•å¤šé€‰æ¡†"
     }
 });
 ```
 
-## ¸üĞÂÈÕÖ¾
+## æ›´æ–°æ—¥å¿—
 ### [v1.1.0] 2017.04.10
-- µ÷ÊÔÔ´Âë½á¹¹,·½±ãºóÆÚÎ¬»¤ºÍÉı¼¶
-- ½«ÑùÊ½µ÷ÕûÎªÄÚÁªĞÎÊ½,²»ĞèÒª¶îÍâÉùÃ÷css
-- ½«Ä¬ÈÏÄ£°æ¶ÀÁ¢Îª¾²Ì¬ÊôĞÔ`vCheckBox.template1`,·½±ãºóÆÚÍØÕ¹ĞÂµÄÑùÊ½
-- Ôö¼Ó**°ëÑ¡**¹¦ÄÜÖ§³Ö
+- è°ƒè¯•æºç ç»“æ„,æ–¹ä¾¿åæœŸç»´æŠ¤å’Œå‡çº§
+- å°†æ ·å¼è°ƒæ•´ä¸ºå†…è”å½¢å¼,ä¸éœ€è¦é¢å¤–å£°æ˜css
+- å°†é»˜è®¤æ¨¡ç‰ˆç‹¬ç«‹ä¸ºé™æ€å±æ€§`vCheckBox.template1`,æ–¹ä¾¿åæœŸæ‹“å±•æ–°çš„æ ·å¼
+- å¢åŠ **åŠé€‰**åŠŸèƒ½æ”¯æŒ
 
 ### [v1.0.0] 2017.04.07
-- ³õÊ¼°æ±¾
+- åˆå§‹ç‰ˆæœ¬
