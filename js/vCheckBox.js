@@ -1,14 +1,14 @@
 /* 
  * date:    2017.04.18
- * version: v1.1.0.0
+ * version: v1.1.0.1
  * author:  blqw
  */
 (function (window) {
     if (window == null || window.Vue == null) {
         return;
     }
-    var version = "1.1.0.0";
-    var template = '<div style="display: inline-block;*display: inline;*zoom: 1;width: 100%;line-height: 22px;" name="sex" value="boy" @click="toggle" @mouseover="$data._hover=1" @mouseout="$data._hover=0">\
+    var version = "1.1.0.1";
+    var template = '<div style="display: inline-block;*display: inline;*zoom: 1;line-height: 22px;" @click="toggle" @mouseover="$data._hover=1" @mouseout="$data._hover=0">\
             <ins :style="{backgroundPositionX:( (!disabled&&checked===false&&$data._hover)?-138:((disabled?-69:0)+(checked?-23:checked==null?-46:0)) ).toString() + \'px\'}" \
             style="background-position:0 0;display: inline-block;*display: inline;*zoom: 1;width: 22px;height: 22px;vertical-align: middle;background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAAWCAYAAABHXJdFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAALASURBVGhD7Zo/aBNRHMe/l///m6QxxFilRDqoregQKw7+GQSHLoKC1kkpUqggKKibi5M4Ozp0EHFQEQfRRVBCnRQb1DZgK6hUmz/X0DaXXC713suFpHGrd7nk7n2G4/dekt+F3334vRfyuNkPMxvQgOEDoxi6m1JG6pK5cUTT3H+WfigjdYnGBno2t1b1pgISWdQk/fF9zwtIiq4mjZxaC6jV92YCttAqIInVoDUfE7BJu4Bq19tCrwyGThimA271Xu2fN1IH3Oq92nOQcXu9/5dGPtYBGbrCBGToSlcKOHl4ADNXkti/3afMMDxePyLROGx2hzJjDLpOwEvJOK4f3YV+jx3HEiFl1twQ+Xz+PlgsFjidbmXWGHRcQLuVw8ShOBL9/xbywsEYbp0YpPHLuRzup7TZsHcfHJXMarMr4yZuj4/KRxCEEtZWizQ2Ch0X8PLoDtw8PohH48MYiTWX2DMjUdw+mZAfBfA6k8e1F/OQNjT5k6br8PrqHS4U3rZpiXW5vfAHgjQuCwKKfF6OjFWTjgv4aj6P5TURIbcd0+f2IbkzgLE9Edw5tZvK9+ZbAVefz0GUzCEfoSx3tlpNoktsKByB3eGEy+VBoK++BamUBazwOTkyXk06LmAmu47xh7P4WSzD57Diwdm9uDc2BCvH4e0Cj6mn5pKPUK2KKOSykKQqOM6CYCiCQDBMXyPy8QaVj6DLj5DFgiBLmMZCvgSXzULlS31fwdSzr6hINeVd5kKSZAnzy1RGTq4HoVIp1zufgbciughI+CV3wPOyhOmlVbxb5DH55AtKojnla1CTJPD5LERRrC+7hazsnrFXA90EJOTWRZye/oSLjz+bXr4GZC9YyP0GbwL5CLoKyGAwARm6ws4DKhjxNIwasNMwDEPDjuS3wTrgZto7oNpQAZVYVXpdQC3ohIBaoJ2AwF+hVI1MelBLSgAAAABJRU5ErkJggg==);background-repeat:no-repeat;vertical-align: middle;"></ins>\
         <span style="display: inline-block;*display: inline;*zoom: 1;vertical-align: middle;">{{text}}</span>\
