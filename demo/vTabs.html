@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!--<script src="js/vue.js"></script>-->
+    <!--<script src="js/vue2.2.6.js"></script>-->
+    <script src="//cdn.staticfile.org/vue/2.2.6/vue.min.js"></script>
+    <script src="../js/vTabs.js"></script>
+
+
+    <script src="//cdn.staticfile.org/prettify/r298/prettify.js"></script>
+    <link href="//cdn.staticfile.org/prettify/r298/prettify.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="view">
+        <h5>操作</h5>
+        <button @click="vm.selectedIndex--" :disabled="vm.selectedIndex===0"> 上一个tab</button>
+        <button @click="vm.selectedIndex++" :disabled="vm.selectedIndex===vm.tabs.length-1"> 下一个tab</button>
+        <i>代码操作可以选中被禁用的标签</i><br />
+        <input v-model.number="value" type="number" :max="vm.tabs.length" min="0" />
+        <button @click="vm.selectedIndex = value"> 选中</button>
+        <button @click="toggleDisable(value)"> {{getState(value)?'启用':'禁用'}}</button>
+        <button @click="deleteTab(value)"> 删除</button><br />
+        <input v-model.trim="text" /> <button @click="vm.tabs.push({text:text})"> 添加</button>
+
+        <h5>当前状态</h5>
+        selectedIndex : {{vm.selectedIndex}}<br />
+        selectedTab.text : {{vm.selectedTab.text}}<br />
+    </div>
+
+    <div id="tabs2">
+    </div>
+    <div id="tab-1">
+        <pre class="prettyprint"></pre>
+    </div>
+    <div id="tab-2">
+        <pre class="prettyprint"></pre>
+    </div>
+    <div id="tab-3">
+        <pre html class="prettyprint"></pre>
+        <pre js class="prettyprint"></pre>
+    </div>
+    <script>
+        var codeMap = {
+            "#tab-1 pre": "#tabs2",
+            "#tab-2 pre": "#js1",
+            "#tab-3 pre[html]": "#view",
+            "#tab-3 pre[js]": "#js2"
+        };
+        for (var source in codeMap) {
+            var el = document.querySelector(codeMap[source]);
+            if (el) {
+                document.querySelector(source).textContent = el.tagName.toLowerCase() === "script" ? el.innerHTML : el.outerHTML;
+            } else {
+                var func = (function (source, selector) {
+                    return function () {
+                        var el = document.querySelector(selector);
+                        document.querySelector(source).textContent = el.tagName.toLowerCase() === "script" ? el.innerHTML : el.outerHTML;
+                        //prettyPrint();
+                    }
+                })(source, codeMap[source]);
+
+                window.addEventListener('load', func);
+            }
+        }
+        window.addEventListener('load', function () { prettyPrint(); });
+    </script>
+
+    <script id="js1">
+        var tabs2 = new vTabs({
+            el: "#tabs2",
+            data: {
+                tabs: [
+                    { text: "html", el: "#tab-1" },
+                    { text: "javascript", el: "#tab-2" },
+                    { text: "其他", disabled: true, el: "#tab-3" }
+                ],
+                _hover: -1
+            }
+        });
+    </script>
+
+    <script id="js2">
+        var vm = new Vue({
+            el: "#view",
+            data: {
+                vm: tabs2,
+                value: tabs2.selectedIndex,
+                text: ""
+            },
+            methods: {
+                toggleDisable: function (index) {
+                    var tab = this.vm.tabs[index];
+                    tab && (tab.disabled = !tab.disabled);
+                },
+                getState: function (index) {
+                    return this.vm.tabValue(this.vm.tabs[index], "disabled", "");
+                },
+                deleteTab: function (index) {
+                    var tab = this.vm.tabs[index];
+                    if (tab && tab.el) {
+                        tab.el.style.display = "none";
+                    }
+                    this.vm.tabs.splice(index, 1);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
